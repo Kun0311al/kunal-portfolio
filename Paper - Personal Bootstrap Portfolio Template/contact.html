@@ -93,12 +93,12 @@
           </div>
           <div class="row block-9">
             <div class="col-md-6 pr-md-5">
-              <form action="mailto:kunalparkar1233@gmail.com">
+              <form action="" id="contact-form">
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Your Name">
+                  <input type="text" class="form-control" placeholder="Name">
                 </div>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Your Email">
+                  <input type="text" class="form-control" placeholder="Email">
                 </div>
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="Subject">
@@ -155,6 +155,32 @@
 
 
     <script src="js/jquery.min.js"></script>
+
+    <!-- emailjs -->
+    
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+           emailjs.init('user_vqDYnqYHusdBMYzZaRNny');
+        })();
+    </script>
+     <script type="text/javascript">
+      window.onload = function() {
+          document.getElementById('contact-form').addEventListener('submit', function(event) {
+              event.preventDefault();
+              emailjs.sendForm('service_h0ru903', 'template_t6zq45f', this)
+                .then(function(response) {
+                  document.getElementById('contact-form').reset();
+                  
+                 
+                }, function(error) {
+                 console.log(error)
+                });
+          });
+      }
+    </script>
+
     <script src="js/jquery-migrate-3.0.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
